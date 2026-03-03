@@ -1,1 +1,1 @@
-# Aulas de Banco de ados, IFSC 2026
+# Aulas de Banco de dados, IFSC 2026
