@@ -100,3 +100,13 @@ INSERT INTO autor_e_livro(codigo, livro, autor) VALUES
 (1, 1, 1);
 
 select * from Emprestimo;
+
+INSERT INTO Livro(codigo, titulo, biblioteca) VALUES
+(2, '1984', 1);
+
+INSERT INTO Autor(codigo, nome) VALUES
+(2, 'George Orwell');
+
+INSERT INTO autor_e_livro(livro, autor) VALUES
+(2, 2);
+
