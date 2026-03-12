@@ -1,5 +1,5 @@
 --Script da criação do banco de dados da Biblioteca
---Aulta de Banco de dados
+--Aula de Banco de dados
 --10/03/2026
 
 CREATE TABLE Biblioteca(
@@ -18,7 +18,7 @@ CREATE TABLE Livro(
 );
 
 CREATE TABLE Usuario(
-	matricular INT PRIMARY KEY,
+	matricula INT PRIMARY KEY,
 	nome VARCHAR(200),
 	sexo ENUM('M', 'F', 'O')
 
@@ -70,13 +70,14 @@ CREATE TABLE Emprestimo(
 	devolucao TIMESTAMP NULL,
 	usuario INT,
 	livro INT,
-	FOREIGN KEY(usuario) REFERENCES Usuario (matricular),
+	FOREIGN KEY(usuario) REFERENCES Usuario (matricula),
 	FOREIGN KEY (livro) REFERENCES  Livro (codigo)
 
 
 );
 
---População do Banco de dados
+
+--População do Banco de dados (inserir dados no banco de dados)
 
 INSERT INTO Biblioteca(codigo, endereco, descricao) VALUES
 (1, 'Rua dos Imigrantes, 445, Rau', 'Biblioteca do IFSC');
@@ -84,7 +85,7 @@ INSERT INTO Biblioteca(codigo, endereco, descricao) VALUES
 INSERT INTO Livro(codigo, titulo, biblioteca) VALUES
 (1, 'Harry Potter', 1);
 
-INSERT INTO Usuario(matricular, nome, sexo) VALUES
+INSERT INTO Usuario(matricula, nome, sexo) VALUES
 (123123, 'Bruno Calegaro', 'M');
 
 INSERT INTO Biblioteca_usuario(codigo, biblioteca, usuario) VALUES
@@ -99,8 +100,6 @@ INSERT INTO Autor(codigo, nome) VALUES
 INSERT INTO autor_e_livro(codigo, livro, autor) VALUES
 (1, 1, 1);
 
-select * from Emprestimo;
-
 INSERT INTO Livro(codigo, titulo, biblioteca) VALUES
 (2, '1984', 1);
 
@@ -110,3 +109,4 @@ INSERT INTO Autor(codigo, nome) VALUES
 INSERT INTO autor_e_livro(livro, autor) VALUES
 (2, 2);
 
+--verificar select * from Emprestimo;
