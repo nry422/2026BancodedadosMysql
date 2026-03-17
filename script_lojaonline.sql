@@ -76,6 +76,29 @@ INSERT INTO  Estoque(loja_id, produto_id, quantidade) VALUES
 INSERT INTO  Estoque(loja_id, produto_id, quantidade) VALUES
 (2, 4, 150);
 
+INSERT INTO Caracteristicas(id, nome, descricao) VALUES
+(1, 'Gamer', 'Para jogos');
+
+INSERT INTO Caracteristicas(id, nome, descricao) VALUES
+(2, 'Genérico', 'Acessório Genérico');
+
+INSERT INTO Produto_Caracteristicas(produto_id, caracteristicas_id) VALUES
+(1, 1);
+
+INSERT INTO Produto_Caracteristicas(produto_id, caracteristicas_id) VALUES
+(2, 1);
+
+INSERT INTO Produto_Caracteristicas(produto_id, caracteristicas_id) VALUES
+(3, 2);
+
+INSERT INTO Produto_Caracteristicas(produto_id, caracteristicas_id) VALUES
+(4, 2);
+
+---criar usuario
+
+CREATE USER 'loja'@'%' IDENTIFIED BY 'senha123';
+select user from mysql.user;
+select distinct user from mysql.user;
 
 
 
