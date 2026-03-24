@@ -86,6 +86,19 @@
 				
 	INSERT INTO Matricula (id, turma, aluno, ano, nota)
 				VALUES(NULL, 1000, 1002, 2026, NULL);
+				
+				
+--- delimiter
+
+DELIMITER//
+CREATE TRIGGER tg_alunos
+AFTER INSERT ON Matricula
+FOR EACH ROW
+BEGIN
+	UPDATE Turma SET nAlunos = nAlunos+1
+	WHERE codigo= NEW.Turma;
+	
+END//
 					
 	
 	
