@@ -94,8 +94,9 @@ INSERT INTO Produto_Caracteristicas(produto_id, caracteristicas_id) VALUES
 INSERT INTO Produto_Caracteristicas(produto_id, caracteristicas_id) VALUES
 (4, 2);
 
----criar usuario
+---criar usuario e database
 
+CREATE DATABASE database_name;
 CREATE USER 'loja'@'%' IDENTIFIED BY 'senha123';
 select user from mysql.user;
 select distinct user from mysql.user;
