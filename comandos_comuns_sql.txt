@@ -1,0 +1,17 @@
+create database lojaonline;
+
+
+select * from produto;
+
+
+update produto SET preco = 1500 where id = 1;
+
+update produto SET preco = 2000, tipo = 'Novo', desconto_usados = 0.0 where id = 4;
+
+
+update produto SET data_lancamento = '2026-03-31'
+where id = 11;
+
+delete from produto_caracteristica where id = 10;
+delete from estoque where id = 11 or id = 12;
+delete from produto WHERE id = 8;
