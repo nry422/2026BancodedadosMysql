@@ -22,7 +22,7 @@ CREATE TABLE Filme(
 	duracao INT
 );
 
-CREATE TABLE Sessaoes(
+CREATE TABLE Sessoes(
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	data DATE,
 	hora TIME,
@@ -77,6 +77,69 @@ CREATE USER 'user_ext'@'localhost' IDENTIFIED BY 'senha0101';
 --Questao 11
 
 GRANT SELECT, INSERT ON Cinefun.* TO 'user_ext'@'localhost';
+
+---adicional
+
+create table Funcionario(
+	matricula INT PRIMARY KEY,
+    nome_completo VARCHAR(200),
+    cargo VARCHAR(45)
+);
+
+create table Ingressos(
+	codigo INT PRIMARY KEY,
+    tipo ENUM('Inteira', 'Meia'),
+    hora_compra TIME,
+    valor DECIMAL(8,2),
+    assento VARCHAR(45),
+    sessao INT,
+    cliente VARCHAR(45),
+    funcionario INT,
+    FOREIGN KEY (sessao) REFERENCES Sessoes(id),
+    foreign key (cliente) references Clientes(cpf),
+    foreign key (funcionario) references funcionario(matricula)
+	
+);
+
+insert into Funcionario(matricula, nome_completo, cargo)
+values (123, 'Fulano Ciclano', 'Demitido'),
+(321, 'Ciclano Fulanus', 'Caixa');
+
+
+insert into Ingressos
+values (25, 'Meia', '09:00', 25.80, 2, 1, '000.098.098-87', 321);
+
+insert into clientes
+values ('000.098.098-88', 'Falano', '33721700', '2026-01-01');
+
+create user 'caixa'@'localhost' identified by 'senha123';
+create user 'gerente'@'localhost' identified by 'senha123';
+create user 'analistamarketing'@'localhost' identified by 'senha123';
+create user 'auditorexterno'@'localhost' identified by 'senha123';
+create user 'funcionariodemitido'@'localhost' identified by 'senha123';
+
+show grants for 'caixa'@'localhost';
+
+SELECT user, host FROM mysql.user;
+
+GRANT SELECT, INSERT ON Cinefun.* TO 'funcionariodemitido'@'localhost';
+
+revoke all privileges on cinefun.* from 'funcionariodemitido'@'localhost';
+
+
+
+GRANT all privileges on Cinefun.* TO 'gerente'@'localhost';
+
+GRANT select on Cinefun.* TO 'analistademarketing';
+
+GRANT select on Cinefun.* TO 'auditorexterno'@'localhost';
+
+GRANT select on Cinefun.sessoes TO 'caixa'@'localhost';
+
+GRANT insert on Cinefun.ingressos TO 'caixa'@'localhost';
+
+
+
 
 
 
